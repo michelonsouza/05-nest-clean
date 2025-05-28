@@ -22,7 +22,7 @@
     "test:ui": "NODE_OPTIONS=--no-warnings vitest --ui",
     "test:watch": "NODE_OPTIONS=--no-warnings vitest --project unit --watch",
     "test:cov": "NODE_OPTIONS=--no-warnings vitest --coverage",
-    "test:cov:prepush": "NODE_OPTIONS=--no-warnings vitest run --coverage --reporter=none",
+    "test:cov:prepush": "NODE_OPTIONS=--no-warnings vitest run --coverage --reporter=json",
     "test:cov:ui": "NODE_OPTIONS=--no-warnings vitest --coverage --ui",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/vitest --runInBand",
     "test:e2e": "NODE_OPTIONS=--no-warnings vitest --project e2e run",

@@ -1,0 +1,65 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "./generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum UserRole {
+  STUDENT
+  INSTRUCTOR
+}
+
+model User {
+  id       String   @id @default(uuid())
+  name     String
+  email    String   @unique
+  password String
+  role     UserRole @default(STUDENT)
+
+  questions Question[]
+  answers   Answer[]
+
+  @@map("users")
+}
+
+model Question {
+  id           String    @id @default(uuid())
+  title        String
+  slug         String    @unique
+  content      String
+  createdAt    DateTime  @default(now()) @map("created_at")
+  updatedAt    DateTime? @updatedAt @map("updated_at")
+  bestAnswerId String?   @unique @map("best_answer_id")
+  authorId     String    @map("author_id")
+
+  bestAnswer Answer?  @relation("BestAnswer", fields: [bestAnswerId], references: [id])
+  author     User     @relation(fields: [authorId], references: [id])
+  answers    Answer[]
+
+  @@map("questions")
+}
+
+model Answer {
+  id         String    @id @default(uuid())
+  content    String
+  createdAt  DateTime  @default(now()) @map("created_at")
+  updatedAt  DateTime? @updatedAt @map("updated_at")
+  questionId String    @map("question_id")
+  authorId   String    @map("author_id")
+
+  bestAnswerOn Question? @relation("BestAnswer")
+  question     Question  @relation(fields: [questionId], references: [id])
+  author       User      @relation(fields: [authorId], references: [id])
+
+  @@map("answers")
+}

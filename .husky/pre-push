@@ -1,0 +1,11 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+npm run test:cov
+
+echo "Checking test coverage..."
+
+if [ $? -ne 0 ]; then
+  ❌ Push rejected: Coverage must be at least 90%.
+  exit 1
+fi

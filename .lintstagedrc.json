@@ -1,6 +1,3 @@
 {
-  "src/**/*.{js,ts,msj,cjs}": [
-    "npm run pretty",
-    "npm run lint:cache"
-  ]
+  "src/**/*.{js,ts,msj,cjs}": ["npm run pretty", "npm run lint:cache"]
 }

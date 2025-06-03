@@ -1,7 +1,6 @@
-import { Controller, Get, Query, UseGuards } from '@nestjs/common';
+import { BadRequestException, Controller, Get, Query } from '@nestjs/common';
 import { z } from 'zod';
 
-import { JWTAuthGuard } from '@infra/auth/jwt-auth.guard';
 import { ZodValidationPipe } from '@infra/http/pipes/zod-validation-pipe';
 
 import { QuestionPresenter } from '../presenters/question-presenter';
@@ -17,7 +16,6 @@ const pageQueryParamSchema = z
 type PageQueryParamSchema = z.infer<typeof pageQueryParamSchema>;
 
 @Controller('/questions')
-@UseGuards(JWTAuthGuard)
 export class ListRecentQuestionsController {
   constructor(
     private readonly listRecentQuestionsUseCase: ListRecentQuestionsUseCase,
@@ -33,7 +31,7 @@ export class ListRecentQuestionsController {
     });
 
     if (result.isLeft()) {
-      throw new Error('Failed to list recent questions');
+      throw new BadRequestException();
     }
 
     return {

@@ -25,9 +25,9 @@
     "test:cov:ui": "NODE_OPTIONS=--no-warnings vitest --coverage --ui",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/vitest --runInBand",
     "test:e2e": "NODE_OPTIONS=--no-warnings vitest --project e2e run",
-    "docker:up": "cd docker && docker compose up -d",
-    "docker:stop": "cd docker && docker compose stop",
-    "docker:down": "cd docker && docker compose down"
+    "docker:up": "docker compose -f ./docker/docker-compose.yml up -d",
+    "docker:stop": "docker compose -f ./docker/docker-compose.yml stop",
+    "docker:down": "docker compose -f ./docker/docker-compose.yml down"
   },
   "dependencies": {
     "@nestjs/common": "^11.0.1",

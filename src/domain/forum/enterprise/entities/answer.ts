@@ -11,7 +11,7 @@ export interface AnswerConstructorParams {
   content: string;
   attachments: AnswerAttachmentList;
   createdAt: Date;
-  updatedAt?: Date;
+  updatedAt?: Date | null;
 }
 
 export class Answer extends AggregateRoot<AnswerConstructorParams> {
@@ -79,7 +79,7 @@ export class Answer extends AggregateRoot<AnswerConstructorParams> {
     return this.params.createdAt;
   }
 
-  get updatedAt(): Date | undefined {
+  get updatedAt(): Date | undefined | null {
     return this.params.updatedAt;
   }
 }

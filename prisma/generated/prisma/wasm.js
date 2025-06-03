@@ -148,6 +148,24 @@ exports.Prisma.AnswerScalarFieldEnum = {
   authorId: 'authorId'
 };
 
+exports.Prisma.CommentScalarFieldEnum = {
+  id: 'id',
+  content: 'content',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  authorId: 'authorId',
+  questionId: 'questionId',
+  answerId: 'answerId'
+};
+
+exports.Prisma.AttachmentScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  url: 'url',
+  questionId: 'questionId',
+  answerId: 'answerId'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -170,7 +188,9 @@ exports.UserRole = exports.$Enums.UserRole = {
 exports.Prisma.ModelName = {
   User: 'User',
   Question: 'Question',
-  Answer: 'Answer'
+  Answer: 'Answer',
+  Comment: 'Comment',
+  Attachment: 'Attachment'
 };
 
 /**

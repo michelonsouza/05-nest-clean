@@ -71,6 +71,10 @@ export class PrismaQuestionsRepository implements QuestionsRepository {
   async delete(data: Question): Promise<void> {
     await this.prismaService.question.delete({
       where: { id: data.id.toString() },
+      include: {
+        answers: true, // Include answers to delete them as well
+        attachments: true, // Include attachments to delete them as well
+      }
     });
   }
 }

@@ -2,8 +2,7 @@ import type { QuestionAttachmentsRepository } from '@/domain/forum/application/r
 import type { QuestionAttachment } from '@/domain/forum/enterprise/entities/question-attachment';
 
 export class InMemoryQuestionAttachementsRepository
-  implements QuestionAttachmentsRepository
-{
+  implements QuestionAttachmentsRepository {
   #questionAttachments: QuestionAttachment[] = [];
 
   async create(questionAttachment: QuestionAttachment): Promise<void> {
@@ -13,9 +12,11 @@ export class InMemoryQuestionAttachementsRepository
   }
 
   async findManyByQuestionId(questionId: string) {
-    return this.#questionAttachments.filter(
+    const data = this.#questionAttachments.filter(
       (item) => item.questionId.toString() === questionId,
     );
+
+    return Promise.resolve(data);
   }
 
   async deleteManyByQuestionId(questionId: string): Promise<void> {

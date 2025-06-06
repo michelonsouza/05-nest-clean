@@ -8,9 +8,7 @@ import { QuestionPresenter } from '../presenters/question-presenter';
 export class GetQuestionBySlugController {
   constructor(
     private readonly getQuestionBySlugUseCase: GetQuestionBySlugUseCase,
-  ) {
-    console.log({ getQuestionBySlugUseCase });
-  }
+  ) {}
 
   @Get()
   async handle(@Param('slug') slug: string) {

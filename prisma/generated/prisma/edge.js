@@ -175,7 +175,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "/Users/michelon/workspace/aulas/rocketseat/node/05-nest-clean-02/prisma/generated/prisma",
+      "value": "/Users/michelon/workspace/aulas/rocketseat/node/05-nest-clean/prisma/generated/prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -189,11 +189,11 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "/Users/michelon/workspace/aulas/rocketseat/node/05-nest-clean-02/prisma/schema.prisma",
+    "sourceFilePath": "/Users/michelon/workspace/aulas/rocketseat/node/05-nest-clean/prisma/schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
-    "rootEnvPath": "../../../.env",
+    "rootEnvPath": null,
     "schemaEnvPath": "../../../.env"
   },
   "relativePath": "../..",

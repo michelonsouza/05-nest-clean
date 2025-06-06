@@ -22,7 +22,7 @@ export class InMemoryQuestionsRepository implements QuestionsRepository {
 
   async save(question: Question) {
     const index = this.#questions.findIndex(
-      (q) => q.id.toValue() === question.id.toValue(),
+      q => q.id.toValue() === question.id.toValue(),
     );
 
     this.#questions[index] = question;
@@ -34,21 +34,21 @@ export class InMemoryQuestionsRepository implements QuestionsRepository {
 
   async findBySlug(slug: string): Promise<Question | null> {
     const question =
-      this.#questions.find((question) => question.slug.value === slug) ?? null;
+      this.#questions.find(question => question.slug.value === slug) ?? null;
 
     return question;
   }
 
   async findById(id: string): Promise<Question | null> {
     const question =
-      this.#questions.find((question) => question.id.toValue() === id) ?? null;
+      this.#questions.find(question => question.id.toValue() === id) ?? null;
 
     return Promise.resolve(question);
   }
 
   async delete(question: Question): Promise<void> {
     const questions = this.#questions.filter(
-      (q) => q.id.toValue() !== question.id.toValue(),
+      q => q.id.toValue() !== question.id.toValue(),
     );
 
     this.#questions = questions;

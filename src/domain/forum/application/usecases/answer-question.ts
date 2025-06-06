@@ -39,7 +39,7 @@ export class AnswerQuestionUseCase {
       questionId: new UniqueEntityID(questionId),
     });
 
-    const answerAttachments = attachmentIds.map((attachmentId) =>
+    const answerAttachments = attachmentIds.map(attachmentId =>
       AnswerAttachment.create({
         attachmentId: new UniqueEntityID(attachmentId),
         answerId: answer.id,

@@ -11,7 +11,7 @@ export class InMemoryStudentsRepository extends StudentsRepository {
   }
 
   findByEmail(email: string): Promise<Student | null> {
-    const student = this.#students.find((student) => student.email === email);
+    const student = this.#students.find(student => student.email === email);
 
     return Promise.resolve(student ?? null);
   }

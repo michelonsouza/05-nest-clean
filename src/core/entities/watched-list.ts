@@ -27,7 +27,7 @@ export abstract class WatchedList<DataType> {
 
   #isCurrentItem(item: DataType): boolean {
     return (
-      this.currentItems.filter((currentItem) =>
+      this.currentItems.filter(currentItem =>
         this.compareItems(currentItem, item),
       ).length !== 0
     );
@@ -35,42 +35,37 @@ export abstract class WatchedList<DataType> {
 
   #isNewItem(item: DataType): boolean {
     return (
-      this.#new.filter((newItem) => this.compareItems(newItem, item)).length !==
-      0
+      this.#new.filter(newItem => this.compareItems(newItem, item)).length !== 0
     );
   }
 
   #isRemovedItem(item: DataType): boolean {
     return (
-      this.#removed.filter((removedItem) =>
-        this.compareItems(removedItem, item),
-      ).length !== 0
+      this.#removed.filter(removedItem => this.compareItems(removedItem, item))
+        .length !== 0
     );
   }
 
   #removeFromNew(item: DataType): void {
-    this.#new = this.#new.filter(
-      (newItem) => !this.compareItems(newItem, item),
-    );
+    this.#new = this.#new.filter(newItem => !this.compareItems(newItem, item));
   }
 
   #removeFromCurrent(item: DataType): void {
     this.currentItems = this.currentItems.filter(
-      (currentItem) => !this.compareItems(currentItem, item),
+      currentItem => !this.compareItems(currentItem, item),
     );
   }
 
   #removeFromRemoved(item: DataType): void {
     this.#removed = this.#removed.filter(
-      (removedItem) => !this.compareItems(removedItem, item),
+      removedItem => !this.compareItems(removedItem, item),
     );
   }
 
   #wasAddedInitially(item: DataType): boolean {
     return (
-      this.#initial.filter((initialItem) =>
-        this.compareItems(initialItem, item),
-      ).length !== 0
+      this.#initial.filter(initialItem => this.compareItems(initialItem, item))
+        .length !== 0
     );
   }
 
@@ -108,11 +103,11 @@ export abstract class WatchedList<DataType> {
 
   public update(items: DataType[]): void {
     const newItems = items.filter(
-      (item) => !this.getItems().some((i) => this.compareItems(item, i)),
+      item => !this.getItems().some(i => this.compareItems(item, i)),
     );
 
     const removedItems = this.getItems().filter(
-      (item) => !items.some((i) => this.compareItems(item, i)),
+      item => !items.some(i => this.compareItems(item, i)),
     );
 
     this.currentItems = items;

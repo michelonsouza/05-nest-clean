@@ -38,7 +38,7 @@ describe('DeleteAnswerUseCase', () => {
     );
 
     await Promise.all(
-      answerAttachments.map((questionAttachment) =>
+      answerAttachments.map(questionAttachment =>
         inMemoryAnswerAttachementsRepository.create(questionAttachment),
       ),
     );

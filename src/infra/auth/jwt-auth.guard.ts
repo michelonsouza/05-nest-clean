@@ -6,14 +6,14 @@ import { Observable } from 'rxjs';
 import { IS_PUBLIC_KEY } from './public';
 @Injectable()
 export class JWTAuthGuard extends AuthGuard('jwt') {
-  constructor(private reflecor: Reflector) {
+  constructor(private reflector: Reflector) {
     super();
   }
 
   canActivate(
     context: ExecutionContext,
   ): boolean | Promise<boolean> | Observable<boolean> {
-    const isPublic = this.reflecor.getAllAndOverride<boolean>(IS_PUBLIC_KEY, [
+    const isPublic = this.reflector.getAllAndOverride<boolean>(IS_PUBLIC_KEY, [
       context.getHandler(),
       context.getClass(),
     ]);

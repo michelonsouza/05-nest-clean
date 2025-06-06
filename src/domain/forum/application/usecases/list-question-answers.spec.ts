@@ -77,7 +77,7 @@ describe('ListQuestionAnswersUseCase', () => {
     const answersToCompare = questionIndex === 0 ? answers : anotherAnswers;
 
     await Promise.all(
-      allAnswers.map((answer) => {
+      allAnswers.map(answer => {
         return inMemoryAnswersRepository.create(answer);
       }),
     );
@@ -116,7 +116,7 @@ describe('ListQuestionAnswersUseCase', () => {
     );
 
     await Promise.all(
-      mockedAnswers.map((answer) => {
+      mockedAnswers.map(answer => {
         return inMemoryAnswersRepository.create(answer);
       }),
     );

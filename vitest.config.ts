@@ -7,7 +7,7 @@ export default defineConfig({
   test: {
     globals: true,
     exclude: ['prisma', 'dist', 'node_modules'],
-    workspace: [
+    projects: [
       {
         extends: true,
         test: {

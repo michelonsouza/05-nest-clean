@@ -49,7 +49,7 @@ describe('EditQuestionUseCase', () => {
     const oldQuestionAttachmentId = questionAttachments[0].id.toValue();
 
     await Promise.all(
-      questionAttachments.map((questionAttachment) =>
+      questionAttachments.map(questionAttachment =>
         inMemoryQuestionAttachmentsRepository.create(questionAttachment),
       ),
     );
@@ -70,7 +70,7 @@ describe('EditQuestionUseCase', () => {
       ...newQuestionAttachmentIds,
     ];
 
-    const objExpectContainsArr = attachmentIds.map((attachementId) =>
+    const objExpectContainsArr = attachmentIds.map(attachementId =>
       expect.objectContaining({
         attachmentId: new UniqueEntityID(attachementId),
       }),

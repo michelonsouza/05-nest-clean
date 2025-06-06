@@ -23,7 +23,5 @@ export class ZodValidationPipe<DataType = any> implements PipeTransform {
 
       throw new BadRequestException('Validation failed');
     }
-
-    return value;
   }
 }

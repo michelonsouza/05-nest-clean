@@ -15,14 +15,14 @@ export class InMemoryAnswerAttachementsRepository
   async findManyByAnswerId(answerId: string) {
     return Promise.resolve(
       this.#answerAttachments.filter(
-        (item) => item.answerId.toString() === answerId,
+        item => item.answerId.toString() === answerId,
       ),
     );
   }
 
   async deleteManyByAnswerId(answerId: string): Promise<void> {
     this.#answerAttachments = this.#answerAttachments.filter(
-      (item) => item.answerId.toString() !== answerId,
+      item => item.answerId.toString() !== answerId,
     );
 
     return Promise.resolve();

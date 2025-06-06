@@ -37,7 +37,7 @@ describe('AnswerQuestionUseCase', () => {
     });
 
     const answer = result.value?.data;
-    const objExpectContainsArr = attachmentIds.map((attachementId) =>
+    const objExpectContainsArr = attachmentIds.map(attachementId =>
       expect.objectContaining({
         attachmentId: new UniqueEntityID(attachementId),
       }),

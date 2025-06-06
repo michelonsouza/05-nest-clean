@@ -47,6 +47,7 @@ export default tseslint.config(
       vitest: vitestPlugin,
     },
     rules: {
+      'object-curly-spacing': 'off',
       '@typescript-eslint/no-unsafe-return': 'off',
       '@typescript-eslint/no-unsafe-argument': 'off',
       '@typescript-eslint/no-explicit-any': 'off',

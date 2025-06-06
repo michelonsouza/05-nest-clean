@@ -8,7 +8,7 @@ import { PrismaService } from "../prisma.service";
 
 @Injectable()
 export class PrismaAnswerAttachmentsRepository implements AnswerAttachmentsRepository {
-  constructor(private readonly prismaService: PrismaService) { }
+  constructor(private readonly prismaService: PrismaService) {}
 
   async findManyByAnswerId(answerId: string): Promise<AnswerAttachment[]> {
     const questionAttachments = await this.prismaService.attachment.findMany({

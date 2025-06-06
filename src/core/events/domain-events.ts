@@ -9,7 +9,7 @@ export class DomainEvents {
   static #markedAggregates: AggregateRoot<any>[] = [];
 
   public static findMarkedAggregateByID(id: UniqueEntityID) {
-    return this.#markedAggregates.find((aggregate) => {
+    return this.#markedAggregates.find(aggregate => {
       return aggregate.id.equals(id);
     });
   }
@@ -45,7 +45,7 @@ export class DomainEvents {
   static #removeAggregateFromMarkedDispatchList(
     aggregate: AggregateRoot<any>,
   ): void {
-    const index = this.#markedAggregates.findIndex((aggregateMarked) => {
+    const index = this.#markedAggregates.findIndex(aggregateMarked => {
       return aggregateMarked.equals(aggregate);
     });
 
@@ -55,7 +55,7 @@ export class DomainEvents {
   static #findMarkedAggregateByID(
     id: UniqueEntityID,
   ): AggregateRoot<any> | undefined {
-    return this.#markedAggregates.find((aggregate) => {
+    return this.#markedAggregates.find(aggregate => {
       return aggregate.id.equals(id);
     });
   }

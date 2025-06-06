@@ -60,7 +60,7 @@ export class EditAnswerUseCase {
       currentAnswerAttachments,
     );
 
-    const answerAttachments = attachmentIds.map((attachmentId) =>
+    const answerAttachments = attachmentIds.map(attachmentId =>
       AnswerAttachment.create({
         attachmentId: new UniqueEntityID(attachmentId),
         answerId: answer.id,

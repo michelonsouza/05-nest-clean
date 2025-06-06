@@ -12,36 +12,32 @@ import { PrismaQuestionCommentsRepository } from './prisma/repositories/prisma-q
 import { PrismaQuestionsRepository } from './prisma/repositories/prisma-questions-repository';
 import { PrismaStudentsRepository } from './prisma/repositories/prisma-students-repository';
 
-const prismaProviders = [
-  PrismaService,
-  {
-    provide: QuestionsRepository,
-    useClass: PrismaQuestionsRepository,
-  },
-  {
-    provide: StudentsRepository,
-    useClass: PrismaStudentsRepository,
-  },
-  PrismaQuestionCommentsRepository,
-  PrismaQuestionAttachmentsRepository,
-  PrismaAnswersRepository,
-  PrismaAnswerCommentsRepository,
-  PrismaAnswerAttachmentsRepository,
-];
-
-const exportsProviders = [
-  PrismaService,
-  QuestionsRepository,
-  StudentsRepository,
-  PrismaQuestionCommentsRepository,
-  PrismaQuestionAttachmentsRepository,
-  PrismaAnswersRepository,
-  PrismaAnswerCommentsRepository,
-  PrismaAnswerAttachmentsRepository,
-];
-
 @Module({
-  providers: prismaProviders,
-  exports: exportsProviders,
+  providers: [
+    PrismaService,
+    {
+      provide: QuestionsRepository,
+      useClass: PrismaQuestionsRepository,
+    },
+    {
+      provide: StudentsRepository,
+      useClass: PrismaStudentsRepository,
+    },
+    PrismaQuestionCommentsRepository,
+    PrismaQuestionAttachmentsRepository,
+    PrismaAnswersRepository,
+    PrismaAnswerCommentsRepository,
+    PrismaAnswerAttachmentsRepository,
+  ],
+  exports: [
+    PrismaService,
+    QuestionsRepository,
+    StudentsRepository,
+    PrismaQuestionCommentsRepository,
+    PrismaQuestionAttachmentsRepository,
+    PrismaAnswersRepository,
+    PrismaAnswerCommentsRepository,
+    PrismaAnswerAttachmentsRepository,
+  ],
 })
 export class DatabaseModule {}

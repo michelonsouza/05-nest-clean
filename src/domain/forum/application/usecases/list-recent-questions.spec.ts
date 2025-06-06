@@ -36,7 +36,7 @@ describe('ListRecentQuestionsUseCase', () => {
     );
 
     await Promise.all(
-      mockedQuestions.map(async (question) =>
+      mockedQuestions.map(async question =>
         inMemoryQuestionsRepository.create(question),
       ),
     );
@@ -74,7 +74,7 @@ describe('ListRecentQuestionsUseCase', () => {
     );
 
     await Promise.all(
-      mockedQuestions.map(async (question) =>
+      mockedQuestions.map(async question =>
         inMemoryQuestionsRepository.create(question),
       ),
     );

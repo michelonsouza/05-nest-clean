@@ -10,7 +10,7 @@ import supertest from 'supertest';
 import { AppModule } from '@infra/app.module';
 import { PrismaService } from '@infra/database/prisma/prisma.service';
 
-describe.only('List recent questions', () => {
+describe.only('Get question by slug', () => {
   let app: INestApplication;
   let prismaService: PrismaService;
   let jwtService: JwtService;
@@ -27,7 +27,7 @@ describe.only('List recent questions', () => {
     await app.init();
   });
 
-  it('[GET] /questions', async () => {
+  it('[GET] /questions/:slug', async () => {
     const name = faker.person.fullName();
     const email = faker.internet.email();
     const password = faker.internet.password();
@@ -67,22 +67,22 @@ describe.only('List recent questions', () => {
     );
 
     const response = await supertest(app.getHttpServer())
-      .get('/questions')
+      .get(`/questions/${questionsToCreate[0].slug}`)
       .set('Authorization', `Bearer ${accessToken}`)
       .send();
 
     const formattedCreatedQuestion = {
-      ...questionsToCreate[questionsQuantity - 1],
-      createdAt:
-        questionsToCreate[questionsQuantity - 1].createdAt.toISOString(),
+      ...questionsToCreate[0],
+      createdAt: questionsToCreate[0].createdAt.toISOString(),
     };
 
-    const compareValue = response.body?.data?.[0] as unknown;
+    const compareValue = response.body?.data as unknown;
 
     expect(response.statusCode).toBe(200);
     expect(compareValue).toEqual(
       expect.objectContaining({
         createdAt: formattedCreatedQuestion.createdAt,
+        slug: formattedCreatedQuestion.slug,
       }),
     );
   });

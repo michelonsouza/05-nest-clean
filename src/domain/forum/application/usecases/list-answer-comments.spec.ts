@@ -75,7 +75,7 @@ describe('ListAnswerCommentsUseCase', () => {
       answerIndex === 0 ? answerComments : anotherAnswerComments;
 
     await Promise.all(
-      allComments.map((comment) => {
+      allComments.map(comment => {
         return inMemoryAnswerCommentsRepository.create(comment);
       }),
     );
@@ -115,7 +115,7 @@ describe('ListAnswerCommentsUseCase', () => {
     );
 
     await Promise.all(
-      mockedAnswers.map((answer) => {
+      mockedAnswers.map(answer => {
         return inMemoryAnswerCommentsRepository.create(answer);
       }),
     );

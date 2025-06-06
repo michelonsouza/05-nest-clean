@@ -15,7 +15,7 @@ export class InMemoryAnswerCommentsRepository
 
   async save(answerComment: AnswerComment) {
     const index = this.#answerComments.findIndex(
-      (c) => c.id.toValue() === answerComment.id.toValue(),
+      c => c.id.toValue() === answerComment.id.toValue(),
     );
 
     this.#answerComments[index] = answerComment;
@@ -25,15 +25,14 @@ export class InMemoryAnswerCommentsRepository
 
   async findById(id: string): Promise<AnswerComment | null> {
     const answerComment =
-      this.#answerComments.find((comment) => comment.id.toValue() === id) ??
-      null;
+      this.#answerComments.find(comment => comment.id.toValue() === id) ?? null;
 
     return Promise.resolve(answerComment);
   }
 
   async delete(answerComment: AnswerComment): Promise<void> {
     const answers = this.#answerComments.filter(
-      (c) => c.id.toValue() !== answerComment.id.toValue(),
+      c => c.id.toValue() !== answerComment.id.toValue(),
     );
 
     this.#answerComments = answers;
@@ -46,7 +45,7 @@ export class InMemoryAnswerCommentsRepository
     { page }: PaginationParams,
   ): Promise<AnswerComment[]> {
     const answerComments = this.#answerComments
-      .filter((comment) => comment.answerId.toValue() === answerId)
+      .filter(comment => comment.answerId.toValue() === answerId)
       .slice((page - 1) * 20, page * 20);
 
     return Promise.resolve(answerComments);

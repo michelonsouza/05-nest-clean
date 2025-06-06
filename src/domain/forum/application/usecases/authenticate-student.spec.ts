@@ -43,7 +43,6 @@ describe('AuthenticateStudentUseCase', () => {
     expect(result.isRight()).toBeTruthy();
     expect(result.value).toEqual({
       data: {
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
         accessToken: expect.any(String),
       },
     });
